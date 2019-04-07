@@ -24,6 +24,10 @@ namespace toy_robot
             "EXIT"
         };
 
+        /// <summary>
+        /// Parses the input string for a valid command and executes it.
+        /// </summary>
+        /// <returns>A confirmation message from the robot.</returns>
         public string Command(string command)
         {
             if (string.IsNullOrEmpty(command))
@@ -92,6 +96,10 @@ namespace toy_robot
             }
         }
 
+        /// <summary>
+        /// Moves the robot 1 unit forward in its current direction.
+        /// </summary>
+        /// <returns>A confirmation message from the robot.</returns>
         private string Move()
         {
             bool offTableAttempted = false;
@@ -138,6 +146,11 @@ namespace toy_robot
             return output;
         }
 
+        /// <summary>
+        /// Places the robot onto the table at the specified coordinates,
+        /// facing the specified direction.
+        /// </summary>
+        /// <returns>A confirmation message from the robot.</returns>
         private string Place(int x, int y, Direction direction)
         {
             if (x < 0 || x > MaxX || y < 0 || y > MaxY)
@@ -153,6 +166,10 @@ namespace toy_robot
             return $"Thanks! I've been placed at X: {x}, Y: {y}, facing {direction}.";
         }
 
+        /// <summary>
+        /// Turns the robot 90º to the left.
+        /// </summary>
+        /// <returns>A confirmation message from the robot.</returns>
         private string TurnLeft()
         {
             switch (Direction)
@@ -177,11 +194,10 @@ namespace toy_robot
             return output;
         }
 
-        private string Report()
-        {
-            return $"I'm sitting at X: {X}, Y: {Y}, facing {Direction} and feeling great. Thanks for asking!";
-        }
-
+        /// <summary>
+        /// Turns the robot 90º to the right.
+        /// </summary>
+        /// <returns>A confirmation message from the robot.</returns>
         private string TurnRight()
         {
             switch (Direction)
@@ -206,6 +222,20 @@ namespace toy_robot
             return output;
         }
 
+        /// <summary>
+        /// Reports the current position of the robot and its direction.
+        /// </summary>
+        /// <returns>A message from the robot indicating its position and direction.</returns>
+        private string Report()
+        {
+            return $"I'm sitting at X: {X}, Y: {Y}, facing {Direction} and feeling great. Thanks for asking!";
+        }
+
+        /// <summary>
+        /// Parses a valid Direction enum value from a string.
+        /// </summary>
+        /// <param name="input">The direction input by the user, expected to be N, S, E or W.</param>
+        /// <returns>A valid Direction value corresponding to the string entered.</returns>
         private Direction ParseDirection(string input)
         {
             Direction direction;
