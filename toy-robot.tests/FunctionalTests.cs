@@ -95,5 +95,14 @@ namespace Tests
             Assert.AreEqual(toyRobot.Y, 1);
             Assert.AreEqual(toyRobot.Direction, Direction.West);
         }
+
+        [Test]
+        public void ReportsCorrectly()
+        {
+            var toyRobot = new ToyRobot();
+            toyRobot.Command("PLACE 1,2,N");
+            var output = toyRobot.Command("REPORT");
+            Assert.AreEqual(output, "I'm sitting at X: 1, Y: 2, facing North and feeling great. Thanks for asking!");
+        }
     }
 }
